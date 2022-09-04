@@ -11,6 +11,12 @@ enum NetworkServiceError: Error {
     case couldNotParseNetworkResponse
 }
 
+enum FetchStatus {
+    case fetching
+    case success
+    case error(NetworkServiceError)
+}
+
 class NetworkService: NetworkServiceProvider {
     func fetch<T: Decodable>(url: URL, usingHeaders headers: [String: String]?) async throws -> Result<T, NetworkServiceError> {
         let configuration = URLSessionConfiguration.default

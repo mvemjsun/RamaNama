@@ -13,6 +13,7 @@
 		D1BDF8F528BD088E00C5B450 /* PlaylistsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8F428BD088E00C5B450 /* PlaylistsRowView.swift */; };
 		D1BDF8F828BD5D9A00C5B450 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8F728BD5D9A00C5B450 /* DateUtil.swift */; };
 		D1BDF8FA28BD612D00C5B450 /* PlaylistItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8F928BD612D00C5B450 /* PlaylistItemsView.swift */; };
+		D1EC66A528C4C8980087B6C8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EC66A428C4C8980087B6C8 /* SettingsView.swift */; };
 		D1FD407E28B25D840029BF37 /* RamaNamaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FD407D28B25D840029BF37 /* RamaNamaApp.swift */; };
 		D1FD408028B25D840029BF37 /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FD407F28B25D840029BF37 /* PlaylistsView.swift */; };
 		D1FD408228B25D840029BF37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FD408128B25D840029BF37 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		D1BDF8F428BD088E00C5B450 /* PlaylistsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsRowView.swift; sourceTree = "<group>"; };
 		D1BDF8F728BD5D9A00C5B450 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		D1BDF8F928BD612D00C5B450 /* PlaylistItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistItemsView.swift; sourceTree = "<group>"; };
+		D1EC66A428C4C8980087B6C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D1FD407A28B25D840029BF37 /* RamaNama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RamaNama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FD407D28B25D840029BF37 /* RamaNamaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamaNamaApp.swift; sourceTree = "<group>"; };
 		D1FD407F28B25D840029BF37 /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				D1FD407F28B25D840029BF37 /* PlaylistsView.swift */,
+				D1EC66A428C4C8980087B6C8 /* SettingsView.swift */,
 				D1BDF8F928BD612D00C5B450 /* PlaylistItemsView.swift */,
 				D1BDF8F428BD088E00C5B450 /* PlaylistsRowView.swift */,
 			);
@@ -360,6 +363,7 @@
 				D1FD40B828B28E3C0029BF37 /* YTService.swift in Sources */,
 				D1FD40A928B25DE20029BF37 /* YTPlayLists.swift in Sources */,
 				D1FD40AB28B25E2E0029BF37 /* YTThumbnail.swift in Sources */,
+				D1EC66A528C4C8980087B6C8 /* SettingsView.swift in Sources */,
 				D1FD40B428B273B00029BF37 /* NetworkService.swift in Sources */,
 				D1FD40AF28B25F8F0029BF37 /* YTVideo.swift in Sources */,
 				D1BDF8F828BD5D9A00C5B450 /* DateUtil.swift in Sources */,

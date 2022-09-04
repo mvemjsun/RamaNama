@@ -12,8 +12,10 @@ struct PlayListViewModelRow: Identifiable {
     let description: String
 }
 
+@MainActor
 final class PlaylistsModel: ObservableObject {
-    @Published var playlistsViewModel = PlaylistsViewModel(playlists: [])
+    @Published var playlistsViewModel: PlaylistsViewModel
+    var fetchStatus: FetchStatus = .fetching
     
     private var playlistsModel: YTPlaylists?
     private var networkService: NetworkServiceProvider
@@ -22,13 +24,14 @@ final class PlaylistsModel: ObservableObject {
     
     init(networkService: NetworkServiceProvider = NetworkService()) {
         self.networkService = networkService
+        playlistsViewModel = PlaylistsViewModel(playlists: [])
     }
     
     func getData(pageToken: String?) async {
         var data: Result<YTPlaylists, NetworkServiceError> = .failure(.couldNotParseNetworkResponse)
         do {
             data = try await ytService.fetchPlaylists(pageToken: pageToken)
-        } catch { }
+        } catch {}
         
         switch data {
         case .success(let playlists):
@@ -39,10 +42,10 @@ final class PlaylistsModel: ObservableObject {
             guard playlists.nextPageToken != nil else { return }
             nextPageToken = playlists.nextPageToken
             await getData(pageToken: nextPageToken)
+             fetchStatus = .success
             
         case .failure(let error):
-            print(error)
-            break
+            fetchStatus = FetchStatus.error(error)
         }
         
     }

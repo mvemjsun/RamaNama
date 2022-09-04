@@ -3,4 +3,102 @@
    uuid = "B8FE47A1-8711-4288-AB6B-953EF06C25B8"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDC72362-3B6D-4EB8-B4CD-C877C9A3037B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RamaNama/Views/PlaylistsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B7F9D2B-F5E6-40DF-871C-188C2B69856A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RamaNama/Views/PlaylistsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84F18A99-83EF-428A-A3F6-A92466C32DC2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RamaNama/ViewModels/PlayListsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getData(pageToken:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D30F84BC-9F11-49A8-BB25-2EA1A49AE01E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RamaNama/ViewModels/PlayListsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "getData(pageToken:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D30F84BC-9F11-49A8-BB25-2EA1A49AE01E - 3bcbe8b52f46c74"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for RamaNama.PlaylistsModel.getData(pageToken: Swift.Optional&lt;Swift.String&gt;) async -&gt; ()"
+                  moduleName = "RamaNama"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pte05/Documents/RamaNama_v2/RamaNama/RamaNama/ViewModels/PlayListsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "500">
+               </Location>
+               <Location
+                  uuid = "D30F84BC-9F11-49A8-BB25-2EA1A49AE01E - 90dd9a7e1a329677"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(6) suspend resume partial function for RamaNama.PlaylistsModel.getData(pageToken: Swift.Optional&lt;Swift.String&gt;) async -&gt; ()"
+                  moduleName = "RamaNama"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pte05/Documents/RamaNama_v2/RamaNama/RamaNama/ViewModels/PlayListsViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

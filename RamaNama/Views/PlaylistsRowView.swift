@@ -4,24 +4,21 @@ struct PlaylistsRowView: View {
     var rowData: PlayListViewModelRow
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(rowData.description)
                     .font(.headline)
                     .foregroundColor(.black)
-                
+                    .multilineTextAlignment(.leading)
                 
                 Text(DateUtil.toDateString(dateString: rowData.publishedDate) ?? "")
                     .font(.subheadline)
                     .foregroundColor(.gray)
-                    .padding(.top, 3)
             }
             Spacer()
             VideoImageView(imageURL: rowData.imageURL, numberOfItems: rowData.numberOfPlaylistItems)
         }
         .frame(height: 95)
-        .padding(.leading, 5)
-        .padding(.trailing, 5)
     }
 }
 

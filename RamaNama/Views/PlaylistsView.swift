@@ -8,33 +8,50 @@
 import SwiftUI
 
 struct PlaylistsView: View {
-    var playlists: PlaylistsViewModel
-    @StateObject private var model: PlaylistsModel = PlaylistsModel()
+    @ObservedObject var model: PlaylistsModel = PlaylistsModel()
+    @State private var showingSettings = false
+    @State var selectedLanguage: Language? = .english
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(model.playlistsViewModel.playlists) { row in
-                    NavigationLink {
-                        PlaylistItemsView(playlistDescription: row.description)
+        
+        switch model.fetchStatus {
+        case .fetching:
+            Text("Loading Playlists ...")
+                .font(.headline)
+                .frame(alignment: .center)
+            .task {
+                await model.getData(pageToken: nil)
+            }
+        case .success:
+            NavigationView {
+                ScrollView {
+                    ForEach(model.playlistsViewModel.playlists) { row in
+                        NavigationLink {
+                            PlaylistItemsView(playlistDescription: row.id)
+                        } label: {
+                            PlaylistsRowView(rowData: row)
+                        }
+                        .padding()
+                    }
+                    .navigationTitle("Playlists (\(selectedLanguage?.rawValue ?? ""))")
+                }
+                .toolbar {
+                    Button {
+                        showingSettings.toggle()
                     } label: {
-                        PlaylistsRowView(rowData: row)
+                        Label("Settings", systemImage: "gearshape.fill")
+                            .foregroundColor(.blue)
+                    }
+                    .sheet(isPresented: $showingSettings) {
+                        SettingsView(selectedLanguage: $selectedLanguage)
                     }
                 }
-                .navigationTitle("Playlists")
             }
-            .toolbar {
-                Button {
-                    
-                } label: {
-                    Label("Settings", systemImage: "gearshape.fill")
-                        .foregroundColor(.blue)
-                }
-            }
-         }
-        .navigationViewStyle(.automatic)
-        .task {
-            await model.getData(pageToken: nil)
+            .navigationViewStyle(.automatic)
+            
+        case .error(_):
+            Text("Error loading network data. Please check network & Retry")
+                .multilineTextAlignment(.center)
         }
         
     }
@@ -42,7 +59,7 @@ struct PlaylistsView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistsView(playlists: PlaylistsMock.data())
+        PlaylistsView(model: PlaylistsMock.data())
             .previewInterfaceOrientation(.portrait)
     }
 }
