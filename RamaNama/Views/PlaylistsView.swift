@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct PlaylistsView: View {
-    @ObservedObject var model: PlaylistsModel = PlaylistsModel()
+    @ObservedObject var model: PlaylistsModel
     @State private var showingSettings = false
     @State var selectedLanguage: Language? = .english
+    
+    var filteredPlaylists: [PlayListViewModelRow] {
+        model.playlistsViewModel.playlists.filter { playlist in
+            guard let language = selectedLanguage, let title = playlist.title else {
+                return false
+            }
+            return title.starts(with: language.rawValue)
+        }
+    }
     
     var body: some View {
         
@@ -19,28 +28,28 @@ struct PlaylistsView: View {
             Text("Loading Playlists ...")
                 .font(.headline)
                 .frame(alignment: .center)
-            .task {
-                await model.getData(pageToken: nil)
-            }
+                .task {
+                    await model.getData(pageToken: nil)
+                }
         case .success:
             NavigationView {
                 ScrollView {
-                    ForEach(model.playlistsViewModel.playlists) { row in
+                    ForEach(filteredPlaylists) { row in
                         NavigationLink {
-                            PlaylistItemsView(playlistDescription: row.id)
+                            PlaylistItemsView(playlistDescription: row.id ?? "N/A")
                         } label: {
                             PlaylistsRowView(rowData: row)
                         }
                         .padding()
                     }
-                    .navigationTitle("Playlists (\(selectedLanguage?.rawValue ?? ""))")
+                    .navigationTitle("Playlists \(selectedLanguage?.rawValue ?? "")")
                 }
                 .toolbar {
                     Button {
                         showingSettings.toggle()
                     } label: {
                         Label("Settings", systemImage: "gearshape.fill")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.black)
                     }
                     .sheet(isPresented: $showingSettings) {
                         SettingsView(selectedLanguage: $selectedLanguage)
@@ -59,7 +68,7 @@ struct PlaylistsView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PlaylistsView(model: PlaylistsMock.data())
+        PlaylistsView(model: PlaylistsMock.data(), selectedLanguage: .english)
             .previewInterfaceOrientation(.portrait)
     }
 }

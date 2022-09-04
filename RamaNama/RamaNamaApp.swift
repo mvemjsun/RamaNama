@@ -4,7 +4,7 @@ import SwiftUI
 struct RamaNamaApp: App {
     var body: some Scene {
         WindowGroup {
-            PlaylistsView()
+            PlaylistsView(model: PlaylistsModel(), selectedLanguage: .english)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
         }
     }

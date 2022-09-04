@@ -10,13 +10,14 @@ struct PlaylistsMock {
         var items: [PlayListViewModelRow] = []
         let model = PlaylistsModel()
         (1...num).forEach { index in
+            let language = ["English", "Hindi", "Telugu", "Sanskrit"].randomElement() ?? "English"
             let playListRow = PlayListViewModelRow(
                 id: "\(index)",
                 title: "Title \(index)",
                 imageURL: URL(string: "https://i.ytimg.com/vi/WzheSE7Py3g/default.jpg"),
                 numberOfPlaylistItems: Int.random(in: 10...30),
                 publishedDate: "2022-05-23T21:39:28Z",
-                description: "Description \(index) this is a very long description that can spread across lines"
+                description: "\(language) Description \(index) this is a very long description that can spread across lines"
             )
             items.append(playListRow)
             model.playlistsViewModel.playlists.append(playListRow)
