@@ -11,6 +11,7 @@ struct PlaylistsMock {
         let model = PlaylistsModel()
         (1...num).forEach { index in
             let language = ["English", "Hindi", "Telugu", "Sanskrit"].randomElement() ?? "English"
+            print("--> \(language)")
             let playListRow = PlayListViewModelRow(
                 id: "\(index)",
                 title: "Title \(index)",
@@ -20,7 +21,7 @@ struct PlaylistsMock {
                 description: "\(language) Description \(index) this is a very long description that can spread across lines"
             )
             items.append(playListRow)
-            model.playlistsViewModel.playlists.append(playListRow)
+            model.viewModel.playlists.append(playListRow)
         }
         model.fetchStatus = .success
         return model

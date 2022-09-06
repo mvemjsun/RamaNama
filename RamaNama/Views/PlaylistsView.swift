@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  RamaNama
-//
-//  Created by Puneet Teng on 21/08/2022.
-//
-
 import SwiftUI
 
 struct PlaylistsView: View {
@@ -13,7 +6,7 @@ struct PlaylistsView: View {
     @State var selectedLanguage: Language? = .english
     
     var filteredPlaylists: [PlayListViewModelRow] {
-        model.playlistsViewModel.playlists.filter { playlist in
+        model.viewModel.playlists.filter { playlist in
             guard let language = selectedLanguage, let title = playlist.title else {
                 return false
             }
@@ -23,52 +16,43 @@ struct PlaylistsView: View {
     
     var body: some View {
         
-        switch model.fetchStatus {
-        case .fetching:
-            Text("Loading Playlists ...")
-                .font(.headline)
-                .frame(alignment: .center)
-                .task {
-                    await model.getData(pageToken: nil)
-                }
-        case .success:
-            NavigationView {
-                ScrollView {
-                    ForEach(filteredPlaylists) { row in
-                        NavigationLink {
-                            PlaylistItemsView(playlistDescription: row.id ?? "N/A")
-                        } label: {
-                            PlaylistsRowView(rowData: row)
-                        }
-                        .padding()
-                    }
-                    .navigationTitle("Playlists \(selectedLanguage?.rawValue ?? "")")
-                }
-                .toolbar {
-                    Button {
-                        showingSettings.toggle()
+        NavigationView {
+            ScrollView {
+                ForEach(filteredPlaylists) { row in
+                    NavigationLink {
+                        PlaylistPageView(playlistPageId: row.id)
                     } label: {
-                        Label("Settings", systemImage: "gearshape.fill")
-                            .foregroundColor(.black)
+                        PlaylistsRowView(rowData: row)
                     }
-                    .sheet(isPresented: $showingSettings) {
-                        SettingsView(selectedLanguage: $selectedLanguage)
-                    }
+                    .padding()
+                }
+                .navigationTitle("Playlists \(selectedLanguage?.rawValue ?? "")")
+            }
+            .toolbar {
+                Button {
+                    showingSettings.toggle()
+                } label: {
+                    Label("Settings", systemImage: "gearshape.fill")
+                        .foregroundColor(.black)
+                }
+                .sheet(isPresented: $showingSettings) {
+                    SettingsView(selectedLanguage: $selectedLanguage)
                 }
             }
-            .navigationViewStyle(.automatic)
-            
-        case .error(_):
-            Text("Error loading network data. Please check network & Retry")
-                .multilineTextAlignment(.center)
         }
-        
+        .onAppear {
+            Task {
+                await model.fetch(pageToken: nil)
+            }
+        }
+        .navigationViewStyle(.automatic)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let data = PlaylistsMock.data()
     static var previews: some View {
-        PlaylistsView(model: PlaylistsMock.data(), selectedLanguage: .english)
+        PlaylistsView(model: data, selectedLanguage: .english)
             .previewInterfaceOrientation(.portrait)
     }
 }

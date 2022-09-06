@@ -14,20 +14,24 @@ struct PlayListViewModelRow: Identifiable {
 
 @MainActor
 final class PlaylistsModel: ObservableObject {
-    @Published var playlistsViewModel: PlaylistsViewModel
-    var fetchStatus: FetchStatus = .fetching
+    @Published var viewModel: PlaylistsViewModel
+    var fetchStatus: FetchStatus = .fetching {
+        didSet {
+            print("---> Status is \(fetchStatus)")
+        }
+    }
     
-    private var playlistsModel: YTPlaylists?
+    // private var playlistsModel: YTPlaylists?
     private var networkService: NetworkServiceProvider
     private var nextPageToken: String?
     lazy private var ytService = YTService(networkService: networkService)
     
     init(networkService: NetworkServiceProvider = NetworkService()) {
         self.networkService = networkService
-        playlistsViewModel = PlaylistsViewModel(playlists: [])
+        viewModel = PlaylistsViewModel(playlists: [])
     }
     
-    func getData(pageToken: String?) async {
+    func fetch(pageToken: String?) async {
         var data: Result<YTPlaylists, NetworkServiceError> = .failure(.couldNotParseNetworkResponse)
         do {
             data = try await ytService.fetchPlaylists(pageToken: pageToken)
@@ -35,15 +39,16 @@ final class PlaylistsModel: ObservableObject {
         
         switch data {
         case .success(let playlists):
+            fetchStatus = .success
             let viewModel = mapToViewModel(playlists: playlists)
             viewModel.forEach { row in
-                self.playlistsViewModel.playlists.append(row)
+                self.viewModel.playlists.append(row)
             }
+
             guard playlists.nextPageToken != nil else { return }
             nextPageToken = playlists.nextPageToken
-            await getData(pageToken: nextPageToken)
-             fetchStatus = .success
-            
+            await fetch(pageToken: nextPageToken)
+
         case .failure(let error):
             fetchStatus = FetchStatus.error(error)
         }
