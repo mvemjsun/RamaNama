@@ -63,5 +63,5 @@ struct PlaylistPageRow: Identifiable {
     let id: String
     let title: String
     let imageURL: URL?
-    let videoId: String?
+    let videoId: String
 }

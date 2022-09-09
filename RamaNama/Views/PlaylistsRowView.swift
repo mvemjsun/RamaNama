@@ -7,7 +7,7 @@ struct PlaylistsRowView: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading) {
                 Text(rowData.description)
-                    .font(.headline)
+                    .font(.subheadline)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                 

@@ -20,7 +20,7 @@ struct PlaylistsView: View {
             ScrollView {
                 ForEach(filteredPlaylists) { row in
                     NavigationLink {
-                        PlaylistPageView(playlistPageId: row.id)
+                        PlaylistPageView(playlistPageId: row.id, description: row.description)
                     } label: {
                         PlaylistsRowView(rowData: row)
                     }

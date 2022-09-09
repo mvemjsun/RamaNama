@@ -3,14 +3,19 @@ import SwiftUI
 struct PlaylistPageView: View {
     @StateObject var model: PlaylistPageModel = PlaylistPageModel()
     var playlistPageId: String
+    var description: String
     
     var body: some View {
         ScrollView {
+            Text(description)
+                .font(.headline)
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+            Spacer()
             ForEach(model.viewModel) { row in
                 NavigationLink {
                     Text("Video")
                 } label: {
-                    PlaylistsPageRowView(playlistPageRow: row)
+                    PlaylistPageRowView(title: row.title, videoId: row.videoId)
                 }
                 .padding()
             }
@@ -22,18 +27,5 @@ struct PlaylistPageView: View {
             }
         }
         .navigationViewStyle(.stack)
-    }
-}
-
-struct PlaylistsPageRowView: View {
-    var playlistPageRow: PlaylistPageRow
-    
-    var body: some View {
-        HStack {
-            Text(playlistPageRow.title)
-                .frame(height: 20, alignment: .leading)
-                .font(.headline)
-            Spacer()
-        }
     }
 }
