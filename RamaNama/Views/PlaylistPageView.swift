@@ -4,6 +4,7 @@ struct PlaylistPageView: View {
     @StateObject var model: PlaylistPageModel = PlaylistPageModel()
     var playlistPageId: String
     var description: String
+    var delegate: PlayerDelegate = PlayerDelegate()
     
     var body: some View {
         ScrollView {
@@ -15,7 +16,7 @@ struct PlaylistPageView: View {
                 NavigationLink {
                     Text("Video")
                 } label: {
-                    PlaylistPageRowView(title: row.title, videoId: row.videoId)
+                    PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
                 }
                 .padding()
             }
