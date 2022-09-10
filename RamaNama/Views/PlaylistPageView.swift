@@ -9,17 +9,14 @@ struct PlaylistPageView: View {
     var body: some View {
         ScrollView {
             Text(description)
-                .font(.headline)
+                .modifier(FontFactory.modifierFor(textType: .pageTitle))
                 .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
             Spacer()
             ForEach(model.viewModel) { row in
-                NavigationLink {
-                    Text("Video")
-                } label: {
-                    PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
-                }
-                .padding()
+                PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
+                 
             }
+            .padding()
             .navigationTitle("Playlists Items")
         }
         .onAppear {

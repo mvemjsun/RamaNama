@@ -5,20 +5,17 @@ struct PlaylistsRowView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(rowData.description)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(.leading)
-                
+                    .modifier(FontFactory.modifierFor(textType: .rowText))
                 Text(DateUtil.toDateString(dateString: rowData.publishedDate) ?? "")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .modifier(FontFactory.modifierFor(textType: .rowSubText))
             }
             Spacer()
             VideoImageView(imageURL: rowData.imageURL, numberOfItems: rowData.numberOfPlaylistItems)
         }
-        .frame(height: 95)
+        .background(Color.backgroundPrimary)
+        .frame(height: 90)
     }
 }
 
@@ -29,7 +26,9 @@ struct VideoImageView: View {
     var body: some View {
         ZStack {
             AsyncImage(url: imageURL)
-                .frame(width: 120, height: 90)
+                .frame(width: 120.0, height: 90)
+                .clipped()
+                .aspectRatio(contentMode: .fit)
             Badge(numberOfItems: numberOfItems)
                 .offset(x: 40, y: 25)
         }
@@ -52,8 +51,17 @@ struct Badge: View {
     }
 }
 
-struct Previews_PlaylistsRowView_Previews: PreviewProvider {
+struct PlaylistsRowView_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        PlaylistsRowView(rowData:
+                            PlayListViewModelRow(
+                                id: "1",
+                                title: "Row 1",
+                                imageURL: URL(string: "https://i.ytimg.com/vi/NvVbxlTETGk/mqdefault.jpg"),
+                                numberOfPlaylistItems: 10,
+                                publishedDate: "2022-04-03T22:33:48Z",
+                                description: "Description that is quite long and can spread across multiple lines of text"
+                            )
+        )
     }
 }

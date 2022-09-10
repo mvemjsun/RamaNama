@@ -9,9 +9,7 @@ struct PlaylistPageRowView: View {
     var body: some View {
         HStack {
             Text(title)
-                .foregroundColor(.black)
-                 .font(.subheadline)
-                .multilineTextAlignment(.leading)
+                .modifier(FontFactory.modifierFor(textType: .rowText))
             Spacer()
 //            Image(systemName: "play.circle")
 //                .aspectRatio(contentMode: .fit)
@@ -23,7 +21,8 @@ struct PlaylistPageRowView: View {
                 PlayerView(videoId: videoId, delegate: delegate)
             }
         }
-        .frame(height: 40)
+        .frame(height: 90)
+        
     }
 }
 
