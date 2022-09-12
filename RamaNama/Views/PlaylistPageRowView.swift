@@ -3,7 +3,6 @@ import SwiftUI
 struct PlaylistPageRowView: View {
     var title: String
     var videoId: String
-    var delegate: PlayerDelegate
     @State private var showPlayer = false
 
     var body: some View {
@@ -19,7 +18,7 @@ struct PlaylistPageRowView: View {
                     .foregroundColor(.white)
             }
             .sheet(isPresented: $showPlayer) {
-                PlayerView(videoId: videoId, delegate: delegate)
+                PlayerView(videoId: videoId)
             }
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
@@ -34,8 +33,7 @@ struct PlaylistPageRowView_Previews: PreviewProvider {
     static var previews: some View {
         PlaylistPageRowView(
             title: "Rama Nama hello how are you this is a long text",
-            videoId: "1",
-            delegate: PlayerDelegate()
+            videoId: "1"
         )
             .previewInterfaceOrientation(.portrait)
     }

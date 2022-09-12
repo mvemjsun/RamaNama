@@ -4,7 +4,6 @@ struct PlaylistPageView: View {
     @StateObject var model: PlaylistPageModel = PlaylistPageModel()
     var playlistPageId: String
     var description: String
-    var delegate: PlayerDelegate = PlayerDelegate()
     
     var body: some View {
         ZStack {
@@ -18,7 +17,7 @@ struct PlaylistPageView: View {
                          .background(Color.gray), alignment: .bottom)
                 Spacer()
                 ForEach(model.viewModel) { row in
-                    PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
+                    PlaylistPageRowView(title: row.title, videoId: row.videoId)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))
                     
                 }                
