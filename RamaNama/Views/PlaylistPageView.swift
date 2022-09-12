@@ -7,18 +7,22 @@ struct PlaylistPageView: View {
     var delegate: PlayerDelegate = PlayerDelegate()
     
     var body: some View {
-        ScrollView {
-            Text(description)
-                .modifier(FontFactory.modifierFor(textType: .pageTitle))
-                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
-            Spacer()
-            ForEach(model.viewModel) { row in
-                PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
-                 
+        ZStack {
+            Color.backgroundPrimary.edgesIgnoringSafeArea(.all)
+            ScrollView {
+                Text(description)
+                    .modifier(FontFactory.modifierFor(textType: .pageTitle))
+                    .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
+                Spacer()
+                ForEach(model.viewModel) { row in
+                    PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
+                        .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))
+                    
+                }                
+                .navigationTitle("Playlists Items")
             }
-            .padding()
-            .navigationTitle("Playlists Items")
         }
+        .ignoresSafeArea(.all, edges: [.bottom])
         .onAppear {
             Task {
                 await model.fetch(playlistPage: playlistPageId, pageToken: nil)

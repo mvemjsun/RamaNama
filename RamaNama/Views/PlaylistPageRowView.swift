@@ -7,22 +7,23 @@ struct PlaylistPageRowView: View {
     @State private var showPlayer = false
 
     var body: some View {
-        HStack {
+        HStack(spacing: 5) {
             Text(title)
                 .modifier(FontFactory.modifierFor(textType: .rowText))
             Spacer()
-//            Image(systemName: "play.circle")
-//                .aspectRatio(contentMode: .fit)
-//                .foregroundColor(.black)
-            Button("Play") {
+            Button {
                 showPlayer.toggle()
+            } label: {
+                Image(systemName: "play.circle")
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.white)
             }
             .sheet(isPresented: $showPlayer) {
                 PlayerView(videoId: videoId, delegate: delegate)
             }
         }
-        .frame(height: 90)
-        
+        // .background(Color.gray)
+        .frame(height: 50)
     }
 }
 

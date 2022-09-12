@@ -43,6 +43,7 @@ struct PlaylistsView: View {
                 }
                 .navigationViewStyle(.automatic)
             }
+            .preferredColorScheme(.dark)
             .ignoresSafeArea(.all, edges: [.bottom])
         }
         .onAppear {
