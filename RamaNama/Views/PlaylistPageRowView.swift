@@ -22,7 +22,10 @@ struct PlaylistPageRowView: View {
                 PlayerView(videoId: videoId, delegate: delegate)
             }
         }
-        // .background(Color.gray)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+        .overlay( Divider()
+            .frame(maxWidth: .infinity, maxHeight: 0.5)
+             .background(Color.gray), alignment: .bottom)
         .frame(height: 50)
     }
 }

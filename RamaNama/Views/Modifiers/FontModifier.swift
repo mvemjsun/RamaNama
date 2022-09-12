@@ -19,8 +19,8 @@ enum TextType {
 }
 
 extension Font {
-    static let rowText = Self.subheadline
-    static let pageTitle = Self.headline
+    static let rowText = Self.title3
+    static let pageTitle = Self.title
 }
 
 extension Color {
@@ -40,7 +40,7 @@ struct FontFactory {
         case .rowSubText:
             modifier = FontModifier(font: Font.rowText, color: Color.rowSubText)
         case .pageTitle:
-            modifier = FontModifier(font: Font.headline, color: Color.rowText)
+            modifier = FontModifier(font: Font.pageTitle, color: Color.rowText)
         }
         return modifier
     }

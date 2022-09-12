@@ -14,7 +14,9 @@ struct PlaylistsRowView: View {
             Spacer()
             VideoImageView(imageURL: rowData.imageURL, numberOfItems: rowData.numberOfPlaylistItems)
         }
-        .background(Color.backgroundPrimary)
+        .overlay( Divider()
+            .frame(maxWidth: .infinity, maxHeight: 0.5)
+             .background(Color.gray), alignment: .bottom)
         .frame(height: 90)
     }
 }

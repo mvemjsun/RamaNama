@@ -19,7 +19,7 @@ struct PlaylistsView: View {
         NavigationView {
             ZStack {
                 Color.backgroundPrimary.edgesIgnoringSafeArea(.all)
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(filteredPlaylists) { row in
                         NavigationLink {
                             PlaylistPageView(playlistPageId: row.id, description: row.description)
