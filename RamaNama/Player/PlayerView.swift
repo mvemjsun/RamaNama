@@ -10,7 +10,7 @@ final class PlayerView: UIViewRepresentable {
     
     init(videoId: String, delegate: YTPlayerViewDelegate) {
         self.videoId = videoId
-        self.delegate = delegate
+        playerView.delegate = delegate
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
