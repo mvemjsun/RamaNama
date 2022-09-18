@@ -35,7 +35,7 @@ struct PlaylistsView: View {
                         showingSettings.toggle()
                     } label: {
                         Label("Settings", systemImage: "gearshape.fill")
-                            .foregroundColor(.white)
+                            .foregroundColor(.orange)
                     }
                     .sheet(isPresented: $showingSettings) {
                         SettingsView(selectedLanguage: $selectedLanguage, selectedBook: $selectedBook)
@@ -46,11 +46,14 @@ struct PlaylistsView: View {
             .preferredColorScheme(.dark)
             .ignoresSafeArea(.all, edges: [.bottom])
         }
+        .onAppear {
+            configureNavBarAppearance()
+        }
     }
     
     private func configureNavBarAppearance() {
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.orange]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.orange]
     }
 }
 
