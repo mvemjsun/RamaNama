@@ -3,14 +3,16 @@ import SwiftUI
 struct PlaylistsView: View {
     @ObservedObject var model: PlaylistsModel
     @State private var showingSettings = false
-    @State var selectedLanguage: Language? = .english
+    @State var selectedLanguage: Language = .english
+    @State var selectedBook: Book = .balaKanda
+    @State var book: Book = .balaKanda
     
     var filteredPlaylists: [PlayListViewModelRow] {
         model.viewModel.playlists.filter { playlist in
-            guard let language = selectedLanguage, let title = playlist.title else {
+            guard let title = playlist.title else {
                 return false
             }
-            return title.hasPrefix("\(language.rawValue)")
+            return title.hasPrefix("\(selectedLanguage.rawValue)") && title.contains(selectedBook.rawValue)
         }
     }
     
@@ -36,7 +38,7 @@ struct PlaylistsView: View {
                             .foregroundColor(.white)
                     }
                     .sheet(isPresented: $showingSettings) {
-                        SettingsView(selectedLanguage: $selectedLanguage)
+                        SettingsView(selectedLanguage: $selectedLanguage, selectedBook: $selectedBook)
                     }
                 }
                 .navigationViewStyle(.automatic)
