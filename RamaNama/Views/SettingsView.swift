@@ -29,6 +29,7 @@ struct SettingsView: View {
                 SettingsRow(languageText: "Sanskrit", selectedLanguage: $selectedLanguage)
             }
         }
+        .foregroundColor(.orange)
         .navigationTitle("Settings")
     }
 }

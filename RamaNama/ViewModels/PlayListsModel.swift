@@ -15,7 +15,6 @@ struct PlayListViewModelRow: Identifiable {
     let chapter: String
 }
 
-@MainActor
 final class PlaylistsModel: ObservableObject {
     @Published var viewModel: PlaylistsViewModel
     var fetchStatus: FetchStatus = .fetching
@@ -29,6 +28,7 @@ final class PlaylistsModel: ObservableObject {
         viewModel = PlaylistsViewModel(playlists: [])
     }
     
+    @MainActor
     func fetch(pageToken: String?) async {
         var data: Result<YTPlaylists, NetworkServiceError> = .failure(.couldNotParseNetworkResponse)
         do {

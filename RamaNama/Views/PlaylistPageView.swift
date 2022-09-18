@@ -4,6 +4,7 @@ struct PlaylistPageView: View {
     @StateObject var model: PlaylistPageModel = PlaylistPageModel()
     var playlistPageId: String
     var description: String
+    var title: String
     
     var body: some View {
         ZStack {
@@ -17,8 +18,9 @@ struct PlaylistPageView: View {
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))
                     
                 }                
-                .navigationTitle("Playlists Items")
+                .navigationTitle(title)
             }
+            .foregroundColor(.orange)
         }
         .ignoresSafeArea(.all, edges: [.bottom])
         .onAppear {

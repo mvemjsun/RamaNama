@@ -21,12 +21,12 @@ struct PlaylistsView: View {
                 List {
                     ForEach(filteredPlaylists) { row in
                         NavigationLink {
-                            PlaylistPageView(playlistPageId: row.id, description: row.description)
+                            PlaylistPageView(playlistPageId: row.id, description: row.description, title: "\(row.book) \(row.chapter)")
                         } label: {
                             PlaylistsRowView(rowData: row)
                         }
                     }
-                    .navigationTitle("Playlists \(selectedLanguage?.rawValue ?? "")")
+                    .navigationTitle("Ramayana")
                 }
                 .toolbar {
                     Button {
@@ -43,12 +43,6 @@ struct PlaylistsView: View {
             }
             .preferredColorScheme(.dark)
             .ignoresSafeArea(.all, edges: [.bottom])
-        }
-        .onAppear {
-            configureNavBarAppearance()
-            Task {
-                await model.fetch(pageToken: nil)
-            }
         }
     }
     
