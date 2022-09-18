@@ -18,7 +18,10 @@ struct PlaylistsMock {
                 imageURL: URL(string: "https://i.ytimg.com/vi/WzheSE7Py3g/default.jpg"),
                 numberOfPlaylistItems: Int.random(in: 10...30),
                 publishedDate: "2022-05-23T21:39:28Z",
-                description: "\(language) Description \(index) this is a very long description that can spread across lines"
+                description: "\(language) Description \(index) this is a very long description that can spread across lines",
+                language: "English",
+                book: "Sundar Kanda",
+                chapter: "Chapter 32"
             )
             items.append(playListRow)
             model.viewModel.playlists.append(playListRow)

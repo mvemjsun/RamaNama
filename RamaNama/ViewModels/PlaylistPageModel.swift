@@ -51,10 +51,27 @@ final class PlaylistPageModel: ObservableObject {
                     let url = URL(string: thumbnailURL) else { return nil }
             return PlaylistPageRow(
                 id: playlistItem.id,
-                title: playlistItem.snippet.title,
+                title: title(titleText: playlistItem.snippet.title),
                 imageURL: url,
                 videoId: playlistItem.snippet.resourceId.videoId
             )
+        }
+    }
+    
+    private func title(titleText: String) -> String {
+        var  pattern: NSRegularExpression
+        do {
+            pattern = try NSRegularExpression(pattern: "\\d{1,3}(\\s*)-(\\s*)\\d{1,3}", options: .caseInsensitive)
+        } catch {
+            return titleText
+        }
+        let range = NSRange(location: 0, length: titleText.utf16.count)
+        let matchResult = pattern.firstMatch(in: titleText, options: [], range: range)
+        
+        if let rangeOfMatch = matchResult?.range {
+            return "Shloka \(titleText[rangeOfMatch])"
+        } else {
+            return titleText
         }
     }
 }

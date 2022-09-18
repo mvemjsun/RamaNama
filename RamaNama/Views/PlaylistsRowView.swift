@@ -6,17 +6,22 @@ struct PlaylistsRowView: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 5) {
-                Text(rowData.description)
-                    .modifier(FontFactory.modifierFor(textType: .rowText))
+                Text(rowData.book)
+                    .font(.title2)
+                    .bold()
+                Text(rowData.chapter)
+                    .font(.title3)
+                    .bold()
+                Text(rowData.language)
+                    .font(.caption2)
                 Text(DateUtil.toDateString(dateString: rowData.publishedDate) ?? "")
-                    .modifier(FontFactory.modifierFor(textType: .rowSubText))
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+                    
             }
             Spacer()
             VideoImageView(imageURL: rowData.imageURL, numberOfItems: rowData.numberOfPlaylistItems)
         }
-        .overlay( Divider()
-            .frame(maxWidth: .infinity, maxHeight: 0.5)
-             .background(Color.gray), alignment: .bottom)
         .frame(height: 90)
     }
 }
@@ -62,7 +67,10 @@ struct PlaylistsRowView_Previews: PreviewProvider {
                                 imageURL: URL(string: "https://i.ytimg.com/vi/NvVbxlTETGk/mqdefault.jpg"),
                                 numberOfPlaylistItems: 10,
                                 publishedDate: "2022-04-03T22:33:48Z",
-                                description: "Description that is quite long and can spread across multiple lines of text"
+                                description: "Description that is quite long and can spread across multiple lines of text",
+                                language: "",
+                                book: "",
+                                chapter: ""
                             )
         )
     }

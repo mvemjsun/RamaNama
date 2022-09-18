@@ -12,6 +12,7 @@
 		D135F15928CB8355004BDE57 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135F15828CB8355004BDE57 /* PlayerView.swift */; };
 		D135F15D28CBD65D004BDE57 /* FontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135F15C28CBD65D004BDE57 /* FontModifier.swift */; };
 		D1742EEE28CA0D7F0058AD9E /* PlaylistPageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1742EED28CA0D7F0058AD9E /* PlaylistPageRowView.swift */; };
+		D1832C1E28D737B800592C6D /* String+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1832C1D28D737B800592C6D /* String+Subscript.swift */; };
 		D1BDF8EF28BAB9B200C5B450 /* PlayListsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8EE28BAB9B200C5B450 /* PlayListsModel.swift */; };
 		D1BDF8F228BBD90B00C5B450 /* PlaylistsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8F128BBD90B00C5B450 /* PlaylistsMockData.swift */; };
 		D1BDF8F528BD088E00C5B450 /* PlaylistsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BDF8F428BD088E00C5B450 /* PlaylistsRowView.swift */; };
@@ -58,6 +59,7 @@
 		D135F15828CB8355004BDE57 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		D135F15C28CBD65D004BDE57 /* FontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontModifier.swift; sourceTree = "<group>"; };
 		D1742EED28CA0D7F0058AD9E /* PlaylistPageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPageRowView.swift; sourceTree = "<group>"; };
+		D1832C1D28D737B800592C6D /* String+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Subscript.swift"; sourceTree = "<group>"; };
 		D1BDF8EE28BAB9B200C5B450 /* PlayListsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListsModel.swift; sourceTree = "<group>"; };
 		D1BDF8F128BBD90B00C5B450 /* PlaylistsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsMockData.swift; sourceTree = "<group>"; };
 		D1BDF8F428BD088E00C5B450 /* PlaylistsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsRowView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,14 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
+		D1832C1C28D737A200592C6D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D1832C1D28D737B800592C6D /* String+Subscript.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D1BDF8ED28BAB97800C5B450 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		D1FD407C28B25D840029BF37 /* RamaNama */ = {
 			isa = PBXGroup;
 			children = (
+				D1832C1C28D737A200592C6D /* Extensions */,
 				D135F15A28CB8363004BDE57 /* Player */,
 				D1BDF8F628BD5D8600C5B450 /* Util */,
 				D1BDF8F328BD082600C5B450 /* Views */,
@@ -414,6 +425,7 @@
 				D1BDF8F228BBD90B00C5B450 /* PlaylistsMockData.swift in Sources */,
 				D1FD407E28B25D840029BF37 /* RamaNamaApp.swift in Sources */,
 				D1FD40B628B289630029BF37 /* Network+Helper.swift in Sources */,
+				D1832C1E28D737B800592C6D /* String+Subscript.swift in Sources */,
 				D135F15D28CBD65D004BDE57 /* FontModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

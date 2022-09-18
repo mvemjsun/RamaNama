@@ -10,16 +10,15 @@ struct PlaylistsView: View {
             guard let language = selectedLanguage, let title = playlist.title else {
                 return false
             }
-            return title.starts(with: language.rawValue)
+            return title.hasPrefix("\(language.rawValue)")
         }
     }
     
     var body: some View {
-        
         NavigationView {
             ZStack {
                 Color.backgroundPrimary.edgesIgnoringSafeArea(.all)
-                ScrollView(showsIndicators: false) {
+                List {
                     ForEach(filteredPlaylists) { row in
                         NavigationLink {
                             PlaylistPageView(playlistPageId: row.id, description: row.description)
@@ -29,7 +28,6 @@ struct PlaylistsView: View {
                     }
                     .navigationTitle("Playlists \(selectedLanguage?.rawValue ?? "")")
                 }
-                .padding()
                 .toolbar {
                     Button {
                         showingSettings.toggle()

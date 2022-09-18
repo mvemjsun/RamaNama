@@ -10,18 +10,16 @@ struct PlayListViewModelRow: Identifiable {
     let numberOfPlaylistItems: Int
     let publishedDate: String
     let description: String
+    let language: String
+    let book: String
+    let chapter: String
 }
 
 @MainActor
 final class PlaylistsModel: ObservableObject {
     @Published var viewModel: PlaylistsViewModel
-    var fetchStatus: FetchStatus = .fetching {
-        didSet {
-            print("---> Status is \(fetchStatus)")
-        }
-    }
+    var fetchStatus: FetchStatus = .fetching
     
-    // private var playlistsModel: YTPlaylists?
     private var networkService: NetworkServiceProvider
     private var nextPageToken: String?
     lazy private var ytService = YTService(networkService: networkService)
@@ -52,7 +50,6 @@ final class PlaylistsModel: ObservableObject {
         case .failure(let error):
             fetchStatus = FetchStatus.error(error)
         }
-        
     }
     
     func mapToViewModel(playlists: YTPlaylists) -> [PlayListViewModelRow] {
@@ -62,18 +59,33 @@ final class PlaylistsModel: ObservableObject {
             nextPageToken = nil
         }
         return playlists.items.compactMap { (playlistItem) -> PlayListViewModelRow? in
+            guard playlistItem.snippet.title.hasPrefix("APP/"),
+                    playlistItem.contentDetails.itemCount > 0 else { return nil }
             if let urlString = playlistItem.snippet.thumbnails?.defaultImage?.url, let url = URL(string: urlString) {
+                let titleTextTuple = titleText(titleText: playlistItem.snippet.title)
                 return PlayListViewModelRow(
                     id: playlistItem.id,
-                    title: playlistItem.snippet.title,
+                    title: titleTextTuple.0,
                     imageURL: url,
                     numberOfPlaylistItems: playlistItem.contentDetails.itemCount,
                     publishedDate: playlistItem.snippet.publishedAt,
-                    description: playlistItem.snippet.description
+                    description: playlistItem.snippet.description,
+                    language: titleTextTuple.1,
+                    book: titleTextTuple.2,
+                    chapter: titleTextTuple.3
                 )
             } else {
                 return nil
             }
         }
+    }
+    
+    func titleText(titleText: String) -> (String, String, String, String) {
+        let titleParts = titleText.split(separator: "/")
+        let language = titleParts[1]
+        let book = titleParts[2]
+        let chapter = titleParts[3]
+        let title = "\(language) \(book) \(chapter)"
+        return ("\(title)", "\(language)", "\(book)", "\(chapter)")
     }
 }

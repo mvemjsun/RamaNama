@@ -8,7 +8,8 @@ struct PlaylistPageRowView: View {
     var body: some View {
         HStack(spacing: 5) {
             Text(title)
-                .modifier(FontFactory.modifierFor(textType: .rowText))
+                .font(.title2)
+                .bold()
             Spacer()
             Button {
                 showPlayer.toggle()
@@ -21,11 +22,8 @@ struct PlaylistPageRowView: View {
                 PlayerView(videoId: videoId)
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-        .overlay( Divider()
-            .frame(maxWidth: .infinity, maxHeight: 0.5)
-             .background(Color.gray), alignment: .bottom)
-        .frame(height: 50)
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .frame(height: 40)
     }
 }
 

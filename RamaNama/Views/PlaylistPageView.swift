@@ -8,13 +8,9 @@ struct PlaylistPageView: View {
     var body: some View {
         ZStack {
             Color.backgroundPrimary.edgesIgnoringSafeArea(.all)
-            ScrollView(showsIndicators: false) {
+            List {
                 Text(description)
-                    .modifier(FontFactory.modifierFor(textType: .pageTitle))
-                    .padding(EdgeInsets(top: 0, leading: 5, bottom: 10, trailing: 5))
-                    .overlay( Divider()
-                        .frame(maxWidth: .infinity, maxHeight: 2)
-                         .background(Color.gray), alignment: .bottom)
+                    .font(.title2)
                 Spacer()
                 ForEach(model.viewModel) { row in
                     PlaylistPageRowView(title: row.title, videoId: row.videoId)
