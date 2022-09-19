@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1018FA428D8FBFD00F66E6C /* PlayerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1018FA328D8FBFD00F66E6C /* PlayerViewDelegate.swift */; };
 		D110F13C28B2C789008DD718 /* PlaylistsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D110F13B28B2C789008DD718 /* PlaylistsPublisher.swift */; };
 		D135F15728CB824A004BDE57 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = D135F15628CB824A004BDE57 /* YouTubeiOSPlayerHelper */; };
 		D135F15928CB8355004BDE57 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D135F15828CB8355004BDE57 /* PlayerView.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D1018FA328D8FBFD00F66E6C /* PlayerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewDelegate.swift; sourceTree = "<group>"; };
 		D110F13B28B2C789008DD718 /* PlaylistsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsPublisher.swift; sourceTree = "<group>"; };
 		D135F15828CB8355004BDE57 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		D135F15C28CBD65D004BDE57 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				D135F15828CB8355004BDE57 /* PlayerView.swift */,
+				D1018FA328D8FBFD00F66E6C /* PlayerViewDelegate.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				D1EC66A528C4C8980087B6C8 /* SettingsView.swift in Sources */,
 				D1FD40B428B273B00029BF37 /* NetworkService.swift in Sources */,
 				D1FD40AF28B25F8F0029BF37 /* YTVideo.swift in Sources */,
+				D1018FA428D8FBFD00F66E6C /* PlayerViewDelegate.swift in Sources */,
 				D1BDF8F828BD5D9A00C5B450 /* DateUtil.swift in Sources */,
 				D135F15928CB8355004BDE57 /* PlayerView.swift in Sources */,
 				D1BDF8F528BD088E00C5B450 /* PlaylistsRowView.swift in Sources */,

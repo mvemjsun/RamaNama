@@ -2,28 +2,29 @@ import Foundation
 import SwiftUI
 import YouTubeiOSPlayerHelper
 
-final class PlayerView: UIViewRepresentable {
+struct PlayerView: UIViewRepresentable {
     
     let playerView = YTPlayerView()
     var videoId: String
-    private var delegate: YTPlayerViewDelegate?
+    private var delegate: YTPlayerViewDelegate
     
-    init(videoId: String) {
+    init(videoId: String, delegate: YTPlayerViewDelegate) {
         self.videoId = videoId
+        self.delegate = delegate
+        playerView.delegate = delegate
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        playerView.delegate = delegate
         play()
     }
     
     func makeUIView(context: Context) -> some UIView {
+        playerView.delegate = delegate
         return playerView
     }
     
     func makeCoordinator() -> Coordinator {
         let coordinator = Coordinator()
-        delegate = coordinator
         return coordinator
     }
     
@@ -41,38 +42,9 @@ final class PlayerView: UIViewRepresentable {
         print("Dismantle")
     }
     
-    class Coordinator: NSObject, YTPlayerViewDelegate {
+    class Coordinator: NSObject {
         override init() {
             super.init()
-            print("---> delegate init()")
-        }
-        func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-            switch state {
-            case .unstarted:
-                print("--->default")
-            case .ended:
-                print("--->ended")
-            case .playing:
-                print("--->playing")
-            case .paused:
-                print("--->paused")
-            case .buffering:
-                print("--->buffering")
-            case .cued:
-                print("--->cued")
-            case .unknown:
-                print("--->unknwn")
-            @unknown default:
-                print("--->default")
-            }
-        }
-
-        func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-            playerView.playVideo()
-        }
-        
-        func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
-            
         }
     }
 }

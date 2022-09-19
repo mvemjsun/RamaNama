@@ -1,10 +1,12 @@
 import SwiftUI
+import YouTubeiOSPlayerHelper
 
 struct PlaylistPageView: View {
     @StateObject var model: PlaylistPageModel = PlaylistPageModel()
     var playlistPageId: String
     var description: String
     var title: String
+    @State private var delegate = PlayerViewDelegate()
     
     var body: some View {
         ZStack {
@@ -14,7 +16,7 @@ struct PlaylistPageView: View {
                     .font(.title2)
                 Spacer()
                 ForEach(model.viewModel) { row in
-                    PlaylistPageRowView(title: row.title, videoId: row.videoId)
+                    PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))
                     
                 }                

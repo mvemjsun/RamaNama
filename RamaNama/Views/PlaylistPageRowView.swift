@@ -1,8 +1,10 @@
 import SwiftUI
+import YouTubeiOSPlayerHelper
 
 struct PlaylistPageRowView: View {
     var title: String
     var videoId: String
+    var delegate: YTPlayerViewDelegate
     @State private var showPlayer = false
 
     var body: some View {
@@ -19,7 +21,7 @@ struct PlaylistPageRowView: View {
                     .foregroundColor(.white)
             }
             .sheet(isPresented: $showPlayer) {
-                PlayerView(videoId: videoId)
+                PlayerView(videoId: videoId, delegate: delegate)
             }
         }
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
@@ -27,12 +29,12 @@ struct PlaylistPageRowView: View {
     }
 }
 
-struct PlaylistPageRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaylistPageRowView(
-            title: "Rama Nama hello how are you this is a long text",
-            videoId: "1"
-        )
-            .previewInterfaceOrientation(.portrait)
-    }
-}
+//struct PlaylistPageRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlaylistPageRowView(
+//            title: "Rama Nama hello how are you this is a long text",
+//            videoId: "1"
+//        )
+//            .previewInterfaceOrientation(.portrait)
+//    }
+//}

@@ -14,9 +14,11 @@ struct PlaylistsRowView: View {
                     .bold()
                 Text(rowData.language)
                     .font(.caption2)
+                    .bold()
                 Text(DateUtil.toDateString(dateString: rowData.publishedDate) ?? "")
                     .font(.caption2)
                     .foregroundColor(.gray)
+                    .bold()
                     
             }
             .foregroundColor(.orange)
