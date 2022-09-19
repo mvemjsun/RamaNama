@@ -60,6 +60,7 @@ final class PlaylistPageModel: ObservableObject {
     
     private func title(titleText: String) -> String {
         var  pattern: NSRegularExpression
+        let uppercaseTitle = titleText.uppercased()
         do {
             pattern = try NSRegularExpression(pattern: "\\d{1,3}(\\s*)-(\\s*)\\d{1,3}", options: .caseInsensitive)
         } catch {
@@ -67,9 +68,11 @@ final class PlaylistPageModel: ObservableObject {
         }
         let range = NSRange(location: 0, length: titleText.utf16.count)
         let matchResult = pattern.firstMatch(in: titleText, options: [], range: range)
+        let hasMeaning = uppercaseTitle.contains("MEANING")
+        let prefix = hasMeaning ? "Meaning Shloka" : "Chanting Shloka"
         
         if let rangeOfMatch = matchResult?.range {
-            return "Shloka \(titleText[rangeOfMatch])"
+            return "\(prefix) \(titleText[rangeOfMatch])"
         } else {
             return titleText
         }

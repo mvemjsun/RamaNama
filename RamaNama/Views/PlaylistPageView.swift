@@ -14,7 +14,8 @@ struct PlaylistPageView: View {
             List {
                 Text(description)
                     .font(.title2)
-                Spacer()
+                    .foregroundColor(.white)
+
                 ForEach(model.viewModel) { row in
                     PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))

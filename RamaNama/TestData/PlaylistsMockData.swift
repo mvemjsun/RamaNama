@@ -11,12 +11,12 @@ struct PlaylistsMock {
         let model = PlaylistsModel()
         (1...num).forEach { index in
             let language = ["English", "Hindi", "Telugu", "Sanskrit"].randomElement() ?? "English"
-            let book = ["Bala Kanda", "Sundar Kanda", "Aranya Kanda", "Ayodhya Kanda", "Kishkindha Kanda", "Yuudha Kanda"].randomElement() ?? "Bala Kanda"
+            let book = ["Bala Kanda", "Sundar Kanda", "Aranya Kanda", "Ayodhya Kanda", "Kishkindha Kanda", "Yuudha Kanda", "Uttara Kanda"].randomElement() ?? "Bala Kanda"
             let chapter = [1,2,3,4,5,6,7,8,9].randomElement() ?? 1
             print("--> \(language)")
             let playListRow = PlayListViewModelRow(
                 id: "\(index)",
-                title: "\(language) Title \(index)",
+                title: "APP/\(language)/\(book)/Chapter \(chapter)",
                 imageURL: URL(string: "https://i.ytimg.com/vi/WzheSE7Py3g/default.jpg"),
                 numberOfPlaylistItems: Int.random(in: 10...30),
                 publishedDate: "2022-05-23T21:39:28Z",

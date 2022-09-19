@@ -9,17 +9,14 @@ struct PlaylistsView: View {
     
     var filteredPlaylists: [PlayListViewModelRow] {
         model.viewModel.playlists.filter { playlist in
-            guard let title = playlist.title else {
-                return false
-            }
-            return title.hasPrefix("\(selectedLanguage.rawValue)") && title.contains(selectedBook.rawValue)
+            return playlist.language == selectedLanguage.rawValue && playlist.book == selectedBook.rawValue
         }
     }
     
     var body: some View {
         NavigationView {
             ZStack {
-                Color.backgroundPrimary.edgesIgnoringSafeArea(.all)
+                Color.black.edgesIgnoringSafeArea(.all)
                 List {
                     ForEach(filteredPlaylists) { row in
                         NavigationLink {
