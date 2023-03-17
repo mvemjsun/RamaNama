@@ -68,7 +68,7 @@ final class PlaylistPageModel: ObservableObject {
         }
         let range = NSRange(location: 0, length: titleText.utf16.count)
         let matchResult = pattern.firstMatch(in: titleText, options: [], range: range)
-        let hasMeaning = uppercaseTitle.contains("MEANING")
+        let hasMeaning = !uppercaseTitle.contains("CHANTING")
         let prefix = hasMeaning ? "Meaning Shloka" : "Chanting Shloka"
         
         if let rangeOfMatch = matchResult?.range {

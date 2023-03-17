@@ -20,10 +20,11 @@ struct PlaylistPageView: View {
                     PlaylistPageRowView(title: row.title, videoId: row.videoId, delegate: delegate)
                         .padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 0))
                     
-                }                
+                }
+                .listRowBackground(Color("theme"))
                 .navigationTitle(title)
             }
-            .foregroundColor(.orange)
+            .foregroundColor(.white)
         }
         .ignoresSafeArea(.all, edges: [.bottom])
         .onAppear {

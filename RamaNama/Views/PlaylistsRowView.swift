@@ -21,7 +21,7 @@ struct PlaylistsRowView: View {
                     .bold()
                     
             }
-            .foregroundColor(.orange)
+            .foregroundColor(.white)
             Spacer()
             VideoImageView(imageURL: rowData.imageURL, numberOfItems: rowData.numberOfPlaylistItems)
         }

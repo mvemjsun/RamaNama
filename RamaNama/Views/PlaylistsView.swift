@@ -25,6 +25,7 @@ struct PlaylistsView: View {
                             PlaylistsRowView(rowData: row)
                         }
                     }
+                    .listRowBackground(Color("theme"))
                     .navigationTitle("Ramayana")
                 }
                 .toolbar {
